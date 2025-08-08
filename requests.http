@@ -1,0 +1,36 @@
+### Health Check
+GET http://localhost:3000/health
+
+### Create Short URL (Auto-generated key)
+POST http://localhost:3000/api/short_url
+Content-Type: application/json
+
+{
+  "long_url": "https://www.myntra.com/sports-shoes/nike/nike-experience-run-11-womens-road-running-shoes/30739789/buy"
+}
+
+### Create Custom Short URL
+POST http://localhost:3000/api/short_url/custom
+Content-Type: application/json
+
+{
+  "key": "summer-sales",
+  "long_url": "https://www.myntra.com/sports-shoes/nike/nike-experience-run-11-womens-road-running-shoes/30739789/buy"
+}
+
+### Redirect using custom key
+GET http://localhost:3000/summer-sales
+
+### Test invalid request (missing long_url)
+POST http://localhost:3000/api/short_url
+Content-Type: application/json
+
+{}
+
+### Test invalid custom request (missing key)
+POST http://localhost:3000/api/short_url/custom
+Content-Type: application/json
+
+{
+  "long_url": "https://example.com"
+}
