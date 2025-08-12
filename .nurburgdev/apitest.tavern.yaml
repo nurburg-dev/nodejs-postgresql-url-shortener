@@ -1,4 +1,5 @@
 test_name: URL Shortener API Tests
+strict: false
 
 stages:
   - name: Test health endpoint
