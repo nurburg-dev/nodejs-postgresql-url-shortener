@@ -1,0 +1,10 @@
+name: urlshortener
+port: 3000
+runtime: nodejs
+instances: 2
+env:
+  DB_HOST: urlshortenerpostgresql
+  DB_NAME: urlshortener
+  DB_USER: urluser
+  DB_PASSWORD: password
+  PORT: 3000

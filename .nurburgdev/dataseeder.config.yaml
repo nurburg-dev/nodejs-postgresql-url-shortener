@@ -1,0 +1,2 @@
+targetName: urlshortenerpostgresql
+relativePath: src/db/init.sql

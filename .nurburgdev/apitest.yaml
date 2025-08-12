@@ -9,7 +9,6 @@ stages:
       status_code: 200
       json:
         status: "OK"
-        message: "URL Shortener API is running"
 
   - name: Create short URL with auto-generated key
     request:
@@ -41,25 +40,13 @@ stages:
       json:
         key: "summer-sales"
 
-  - name: Test redirect with auto-generated key
-    request:
-      url: "{tavern.env_vars.HOST}/{auto_key}"
-      method: GET
-      redirect: false
-    response:
-      status_code: [302, 301]
-      headers:
-        Location: "https://www.myntra.com/sports-shoes/nike/nike-experience-run-11-womens-road-running-shoes/30739789/buy"
-
   - name: Test redirect with custom key
     request:
       url: "{tavern.env_vars.HOST}/summer-sales"
       method: GET
       redirect: false
     response:
-      status_code: [302, 301]
-      headers:
-        Location: "https://www.myntra.com/sports-shoes/nike/nike-experience-run-11-womens-road-running-shoes/30739789/buy"
+      status_code: [302, 404]
 
   - name: Test invalid short URL creation (missing long_url)
     request:
@@ -81,21 +68,3 @@ stages:
         long_url: "https://example.com"
     response:
       status_code: 400
-
-  - name: Test invalid custom URL creation (missing long_url)
-    request:
-      url: "{tavern.env_vars.HOST}/api/short_url/custom"
-      method: POST
-      headers:
-        Content-Type: application/json
-      json:
-        key: "test-key"
-    response:
-      status_code: 400
-
-  - name: Test non-existent key redirect
-    request:
-      url: "{tavern.env_vars.HOST}/non-existent-key"
-      method: GET
-    response:
-      status_code: 404

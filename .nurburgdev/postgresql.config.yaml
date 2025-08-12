@@ -1,0 +1,6 @@
+name: devpostgresql
+cpuCores: 1
+memoryGB: 1
+dbName: devdb
+user: devuser
+password: password

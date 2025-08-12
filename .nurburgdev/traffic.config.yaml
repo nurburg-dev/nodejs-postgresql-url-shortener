@@ -1,0 +1,3 @@
+env:
+  API_HOST: http://urlshortener:3000
+runtimeInMinutes: 15
